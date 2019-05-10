@@ -2,7 +2,7 @@ name := "scalatestplus-easymock"
 
 organization := "org.scalatestplus"
 
-version := "1.0.0-SNAP2"
+version := "1.0.0-SNAP3"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -29,7 +29,7 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 libraryDependencies ++= Seq(
   "org.easymock" % "easymockclassextension" % "3.2",
-  "org.scalatest" %% "scalatest" % "3.1.0-SNAP9"
+  "org.scalatest" %% "scalatest" % "3.1.0-SNAP10"
 )
 
 enablePlugins(SbtOsgi)
