@@ -19,7 +19,7 @@ import org.scalatest._
 //import SharedHelpers._
 import refspec.RefSpec
 
-class EasyMockSugarSpec extends FlatSpec with Matchers {
+class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matchers {
   "The EasyMockSugar trait's whenExecuting method" should
           "work with multiple mocks passed in" in {
     val a = new RefSpec with EasyMockSugar {
