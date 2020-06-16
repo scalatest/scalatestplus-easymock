@@ -23,7 +23,7 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.3")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.3", "0.26.0-RC1")
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
@@ -31,6 +31,8 @@ libraryDependencies ++= Seq(
   "org.easymock" % "easymockclassextension" % "3.2",
   "org.scalatest" %% "scalatest" % "3.1.3"
 )
+
+Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 import scala.xml.transform.{RewriteRule, RuleTransformer}
