@@ -16,14 +16,13 @@
 package org.scalatestplus.easymock
 
 import org.scalatest._
-//import SharedHelpers._
-import refspec.RefSpec
+import funsuite.AnyFunSuite
 
 class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matchers {
   "The EasyMockSugar trait's whenExecuting method" should
           "work with multiple mocks passed in" in {
-    val a = new RefSpec with EasyMockSugar {
-      def `test that should fail`: Unit = {
+    val a = new AnyFunSuite with EasyMockSugar {
+      test("test that should fail") {
         trait OneFish {
           def eat(food: String): Unit = ()
         }
@@ -48,13 +47,14 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed`: Unit = {
+      test("test that should succeed") {
         trait OneFish {
           def eat(food: String): Unit = ()
         }
         trait TwoFish {
           def eat(food: String): Unit = ()
         }
+
         val oneFishMock = mock[OneFish]
         val twoFishMock = mock[TwoFish]
 
@@ -69,7 +69,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail with class`: Unit = {
+      test("test that should fail with class") {
         class OneFish {
           def eat(food: String): Unit = ()
         }
@@ -90,7 +90,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed with class`: Unit = {
+      test("test that should succeed with class") {
         class OneFish {
           def eat(food: String): Unit = ()
         }
@@ -111,7 +111,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail strict`: Unit = {
+      test("test that should fail strict") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -135,7 +135,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed strict`: Unit = {
+      test("test that should succeed strict") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -159,7 +159,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed nice`: Unit = {
+      test("test that should succeed nice") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -182,7 +182,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail nice`: Unit = {
+      test("test that should fail nice") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -214,8 +214,8 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
   }
 
   it should "work with multiple mocks passed in as an implicit Seq" in {
-    val a = new RefSpec with EasyMockSugar {
-      def `test that should fail`: Unit = {
+    val a = new AnyFunSuite with EasyMockSugar {
+      test("test that should fail") {
         trait OneFish {
           def eat(food: String): Unit = ()
         }
@@ -230,7 +230,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -238,7 +238,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed`: Unit = {
+      test("test that should succeed") {
         trait OneFish {
           def eat(food: String): Unit = ()
         }
@@ -253,7 +253,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -261,7 +261,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail with class`: Unit = {
+      test("test that should fail with class") {
         class OneFish {
           def eat(food: String): Unit = ()
         }
@@ -276,7 +276,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -284,7 +284,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed with class`: Unit = {
+      test("test that should succeed with class") {
         class OneFish {
           def eat(food: String): Unit = ()
         }
@@ -299,7 +299,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -307,7 +307,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail strict`: Unit = {
+      test("test that should fail strict") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -324,7 +324,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.burp("red fish")
@@ -333,7 +333,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed strict`: Unit = {
+      test("test that should succeed strict") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -350,7 +350,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -359,7 +359,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should succeed nice`: Unit = {
+      test("test that should succeed nice") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -375,7 +375,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
@@ -384,7 +384,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
         }
       }
 
-      def `test that should fail nice`: Unit = {
+      test("test that should fail nice") {
         class OneFish {
           def eat(food: String): Unit = ()
           def burp(flavor: String): Unit = ()
@@ -401,7 +401,7 @@ class EasyMockSugarSpec extends flatspec.AnyFlatSpec with matchers.should.Matche
           twoFishMock.eat("blue fish")
         }
 
-        implicit val mocks = MockObjects(oneFishMock, twoFishMock)
+        implicit val mocks: MockObjects = MockObjects(oneFishMock, twoFishMock)
 
         whenExecuting {
           oneFishMock.eat("red fish")
