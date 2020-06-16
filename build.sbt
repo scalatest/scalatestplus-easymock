@@ -86,4 +86,14 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
+pomExtra := (
+  <scm>
+    <url>https://github.com/scalatest/scalatestplus-easymock</url>
+    <connection>scm:git:git@github.com:scalatest/scalatestplus-easymock.git</connection>
+    <developerConnection>
+      scm:git:git@github.com:scalatest/scalatestplus-easymock.git
+    </developerConnection>
+  </scm>
+)
+
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
