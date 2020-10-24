@@ -97,3 +97,5 @@ pomExtra := (
 )
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+
+scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + EasyMock ${version.value}")
