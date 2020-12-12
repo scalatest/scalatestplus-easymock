@@ -2,7 +2,7 @@ name := "easymock-3.2"
 
 organization := "org.scalatestplus"
 
-version := "3.3.0.0-SNAP2"
+version := "3.3.0.0-SNAP3"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -23,17 +23,21 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.10", "2.13.1")
+scalaVersion := "2.13.4"
+
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.4", "3.0.0-M2")
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
   "org.easymock" % "easymockclassextension" % "3.2",
-  "org.scalatest" %% "scalatest-core" % "3.3.0-SNAP2", 
-  "org.scalatest" %% "scalatest-refspec" % "3.3.0-SNAP2" % "test", 
-  "org.scalatest" %% "scalatest-flatspec" % "3.3.0-SNAP2" % "test", 
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.3.0-SNAP2" % "test"
+  "org.scalatest" %% "scalatest-core" % "3.3.0-SNAP3", 
+  "org.scalatest" %% "scalatest-funsuite" % "3.3.0-SNAP3" % "test",
+  "org.scalatest" %% "scalatest-flatspec" % "3.3.0-SNAP3" % "test", 
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.3.0-SNAP3" % "test"
 )
+
+Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 import scala.xml.transform.{RewriteRule, RuleTransformer}
@@ -84,8 +88,19 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
+pomExtra := (
+  <scm>
+    <url>https://github.com/scalatest/scalatestplus-easymock</url>
+    <connection>scm:git:git@github.com:scalatest/scalatestplus-easymock.git</connection>
+    <developerConnection>
+      scm:git:git@github.com:scalatest/scalatestplus-easymock.git
+    </developerConnection>
+  </scm>
+)
+
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
-pgpSecretRing := file((Path.userHome / ".gnupg" / "secring.gpg").getAbsolutePath)
+// Temporary disable publishing of doc in dotty, can't get it to build.
+publishArtifact in (Compile, packageDoc) := !scalaBinaryVersion.value.startsWith("3.")
 
-pgpPassphrase := None
+scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + EasyMock ${version.value}")
