@@ -2,7 +2,7 @@ name := "easymock-3.2"
 
 organization := "org.scalatestplus"
 
-version := "3.2.5.0"
+version := "3.2.6.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -31,10 +31,10 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 libraryDependencies ++= Seq(
   "org.easymock" % "easymockclassextension" % "3.2",
-  "org.scalatest" %% "scalatest-core" % "3.2.5", 
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.5" % "test", 
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.5" % "test", 
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.5" % "test" 
+  "org.scalatest" %% "scalatest-core" % "3.2.6", 
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.6" % "test", 
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.6" % "test", 
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.6" % "test" 
 )
 
 Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
