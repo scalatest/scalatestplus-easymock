@@ -105,4 +105,4 @@ publishArtifact in (Compile, packageDoc) := !scalaBinaryVersion.value.startsWith
 
 scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + EasyMock ${version.value}", 
                                        "-sourcepath", baseDirectory.value.getAbsolutePath(), 
-                                       "-doc-source-url", s"https://github.com/scalatest/releases-source/blob/main/${version.value}/scalatestplus-easymock€{FILE_PATH}.scala")
+                                       "-doc-source-url", s"https://github.com/scalatest/releases-source/blob/main/scalatestplus-easymock/${version.value}/€{FILE_PATH}.scala")
