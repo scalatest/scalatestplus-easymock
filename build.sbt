@@ -5,7 +5,7 @@ name := "easymock-3.2"
 
 organization := "org.scalatestplus"
 
-version := "3.2.9.0"
+version := "3.2.9.1"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -85,7 +85,7 @@ publishTo := {
 
 publishMavenStyle := true
 
-publishArtifact in Test := false
+Test / publishArtifact := false
 
 pomIncludeRepository := { _ => false }
 
@@ -102,7 +102,7 @@ pomExtra := (
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 // Temporary disable publishing of doc in dotty, can't get it to build.
-publishArtifact in (Compile, packageDoc) := !scalaBinaryVersion.value.startsWith("3")
+Compile / packageDoc / publishArtifact := !scalaBinaryVersion.value.startsWith("3")
 
 def docTask(docDir: File, resDir: File, projectName: String): File = {
   val docLibDir = docDir / "lib"
@@ -131,10 +131,10 @@ def docTask(docDir: File, resDir: File, projectName: String): File = {
   docDir
 }
 
-doc in Compile := docTask((doc in Compile).value,
-                          (sourceDirectory in Compile).value,
+Compile / doc := docTask((Compile / doc).value,
+                          (Compile / sourceDirectory).value,
                           name.value)
 
-scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + EasyMock ${version.value}", 
+Compile / doc / scalacOptions := Seq("-doc-title", s"ScalaTest + EasyMock ${version.value}", 
                                        "-sourcepath", baseDirectory.value.getAbsolutePath(), 
                                        "-doc-source-url", s"https://github.com/scalatest/releases-source/blob/main/scalatestplus-easymock/${version.value}€{FILE_PATH}.scala") 
