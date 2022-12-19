@@ -5,7 +5,7 @@ name := "easymock-4.3"
 
 organization := "org.scalatestplus"
 
-version := "3.2.14.0"
+version := "3.2.15.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -26,18 +26,18 @@ developers := List(
   )
 )
 
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.10"
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.16", "2.13.8", "3.1.3")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.17", "2.13.10", "3.1.3")
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
   "org.easymock" % "easymock" % "4.3",
-  "org.scalatest" %% "scalatest-core" % "3.2.14", 
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.14" % "test", 
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.14" % "test", 
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.14" % "test" 
+  "org.scalatest" %% "scalatest-core" % "3.2.15", 
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.15" % "test", 
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % "test", 
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % "test" 
 )
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
