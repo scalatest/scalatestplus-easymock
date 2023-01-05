@@ -1,7 +1,7 @@
 import java.io.PrintWriter
 import scala.io.Source
 
-name := "easymock-5.0"
+name := "easymock-5.1"
 
 organization := "org.scalatestplus"
 
@@ -33,7 +33,7 @@ crossScalaVersions := List("2.11.12", "2.12.17", "2.13.10", "3.1.3")
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "org.easymock" % "easymock" % "5.0.1",
+  "org.easymock" % "easymock" % "5.1.0",
   "org.scalatest" %% "scalatest-core" % "3.2.15", 
   "org.scalatest" %% "scalatest-funsuite" % "3.2.15" % "test", 
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % "test", 
