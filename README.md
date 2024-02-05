@@ -3,12 +3,12 @@
 
  **Usage**
 
-To use it for ScalaTest 3.2.17 and EasyMock 5.1.x: 
+To use it for ScalaTest 3.2.18 and EasyMock 5.2.x: 
 
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "easymock-5-1" % "3.2.17.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "easymock-5-2" % "3.2.18.0" % "test"
 ```
 
 Maven: 
@@ -16,8 +16,8 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>easymock-5-1_2.13</artifactId>
-  <version>3.2.17.0</version>
+  <artifactId>easymock-5-2_2.13</artifactId>
+  <version>3.2.18.0</version>
   <scope>test</scope>
 </dependency>
 ```
