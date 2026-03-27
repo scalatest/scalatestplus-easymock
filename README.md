@@ -14,12 +14,12 @@ If ScalaTest has saved you time, helped you ship better software, or become a ke
 
  **Usage**
 
-To use it for ScalaTest 3.2.19 and EasyMock 5.3.x: 
+To use it for ScalaTest 3.2.20 and EasyMock 5.6.x: 
 
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "easymock-5-3" % "3.2.19.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "easymock-5-6" % "3.2.20.0" % "test"
 ```
 
 Maven: 
@@ -27,8 +27,8 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>easymock-5-3_3</artifactId>
-  <version>3.2.19.0</version>
+  <artifactId>easymock-5-6_3</artifactId>
+  <version>3.2.20.0</version>
   <scope>test</scope>
 </dependency>
 ```
@@ -39,4 +39,5 @@ Please use the following commands to publish to Sonatype:
 
 ```
 $ sbt +publishSigned
+$ sbt sonaUpload
 ```

@@ -1,11 +1,11 @@
 import java.io.PrintWriter
 import scala.io.Source
 
-name := "easymock-5.3"
+name := "easymock-5.6"
 
 organization := "org.scalatestplus"
 
-version := "3.2.19.0"
+version := "3.2.20.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-easymock"))
 
@@ -26,18 +26,18 @@ developers := List(
   )
 )
 
-scalaVersion := "2.13.13"
+scalaVersion := "2.13.18"
 
-crossScalaVersions := List("2.11.12", "2.12.19", "2.13.13", "3.3.3")
+crossScalaVersions := List("2.11.12", "2.12.21", scalaVersion.value, "3.3.7")
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "org.easymock" % "easymock" % "5.3.0",
-  "org.scalatest" %% "scalatest-core" % "3.2.19", 
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.19" % "test", 
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % "test", 
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.19" % "test" 
+  "org.easymock" % "easymock" % "5.6.0",
+  "org.scalatest" %% "scalatest-core" % "3.2.20", 
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.20" % "test", 
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.20" % "test", 
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.20" % "test" 
 )
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
@@ -78,10 +78,7 @@ OsgiKeys.additionalHeaders:= Map(
   "Bundle-Vendor" -> "Artima, Inc."
 )
 
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  Some("publish-releases" at nexus + "service/local/staging/deploy/maven2")
-}
+publishTo := localStaging.value
 
 publishMavenStyle := true
 
